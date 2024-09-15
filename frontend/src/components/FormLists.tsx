@@ -1,12 +1,15 @@
 import React from 'react'
 
-const FormLists = ({ todos }) => {
+const FormLists = ({ todos, clickhandler }) => {
+
+
+
   return (
-    <div>
+    <>
      {todos.map( todo => (
-      <li key={todo.id} className='text-lg '>○{todo.todo}</li>
+      <div  className='bg-white rounded p-2 k text-lg border border-gray-200' key={todo.id}><input type="checkbox" onChange={()=> clickhandler(todo.id)} />{todo.todo}</div>
      ))}
-    </div>
+    </>
   )
 }
 

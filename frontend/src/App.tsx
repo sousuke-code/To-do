@@ -7,12 +7,12 @@ import FormLists from "./components/FormLists";
 type TodoType = {
   id: number;
   todo: string;
+  done:false;
 };
 
 type AddTodoType = {
   todo: string;
 };
-
 
 export default function Home() {
   const  [todos, setTodos] = useState<TodoType[]>([]);
@@ -31,8 +31,14 @@ export default function Home() {
     });
   }
 
+  const Clickhandler = (id) => {
+    const newTodos = [...todos];
+    const todo = newTodos.find((todo) => todo.id === id);
+    todo.done != !todo?.done;
+    setTodos(newTodos);
+  }
 
-
+  
   useEffect(() =>{
     axios
      .get("http://localhost:8000")
@@ -48,7 +54,7 @@ export default function Home() {
       <h1 className="flex justify-center text-3xl font-bold mb-10">TodList</h1>
      <FormInput todos={todos} setTodos = {setTodos}/>
 
-     <FormLists todos = {todos} />
+     <FormLists todos = {todos} clickhandler= {Clickhandler}/>
     </div>
   );
 }
