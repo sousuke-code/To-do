@@ -7,7 +7,7 @@ import { uid } from "uid";
 dotenv.config();
 
 const app: express.Express = express();
-const port = ;
+const port = 8000;
 
 const supabaseUrl = process.env.SUPABASE_URL || "";
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "";
@@ -17,7 +17,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 //   res.send("Hello Word");
 // });
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:517"}));
 app.use(express.json());
 
 app.get("/", async (req: express.Request, res: express.Response) => {
