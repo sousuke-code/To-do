@@ -1,18 +1,24 @@
 import axios from 'axios';
-import React from 'react'
 import { useForm } from 'react-hook-form';
 
+
+
+type AddTodo = {
+  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+}
 
 type AddTodoType = {
   todo: string;
 };
-const FormInput = ({ todos, setTodos}) => {
-  const {register, handleSubmit } = useForm<AddTodoType>();
+
+const FormInput = ({ setTodos} : AddTodo ) => {
+  const {register, handleSubmit, reset } = useForm<AddTodoType>();
 
   const addTodo = async (data: AddTodoType) => {
     const { todo } = data;
+    const status = "incomplete";
     await axios
-    .post("http://localhost:8000/add", { todo })
+    .post("http://localhost:8000/add", { todo,status })
     .then((response) => {
       const newTodo = response.data;
       setTodos((prevTodos) => [newTodo, ...prevTodos]);
@@ -20,6 +26,8 @@ const FormInput = ({ todos, setTodos}) => {
     .catch((error) => {
       console.log(error);
     });
+
+    reset();
   }
   return (
 

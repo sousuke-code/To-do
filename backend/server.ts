@@ -17,7 +17,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 //   res.send("Hello Word");
 // });
 
-app.use(cors({ origin: "http://localhost:5174"}));
+app.use(cors({ origin: "http://localhost:5173"}));
 app.use(express.json());
 
 app.get("/", async (req: express.Request, res: express.Response) => {
@@ -37,11 +37,11 @@ app.get("/", async (req: express.Request, res: express.Response) => {
 app.post("/add", async (req: express.Request, res: express.Response) => {
   console.log(req.body);
 
-  const { todo } = req.body;
+  const { todo,status } = req.body;
 
   const { data, error } = await supabase
     .from("todos")
-    .insert([{todo}])
+    .insert([{todo, status }])
     .select();
 
     if (error) {
@@ -51,6 +51,23 @@ app.post("/add", async (req: express.Request, res: express.Response) => {
 
 
     return res.status(200).json(data[0]);
+  });
+
+
+  app.post("/update-status", async (req: express.Request, res: express.Response) => {
+    const { id, status } = req.body;
+  
+    const { data, error } = await supabase
+      .from("todos")
+      .update({ status })
+      .eq("id", id);
+  
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ error });
+    }
+  
+    return res.status(200).json({ data });
   });
 
 
