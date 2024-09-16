@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-
+type TodoType = {
+  id: number;
+  todo: string;
+  status: string;
+};
 
 type AddTodo = {
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;

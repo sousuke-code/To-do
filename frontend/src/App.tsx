@@ -26,7 +26,7 @@ const App  = () => {
   return(
     <div className="bg-gray-200 m-40 broder border-white-200 rounded shadow p-20 ">
       <h1 className="flex justify-center text-3xl font-bold mb-10">TodList</h1>
-     <FormInput todos={todos} setTodos = {setTodos}/>
+     <FormInput setTodos = {setTodos}/>
 
      <FormLists todos = {todos} setTodos = {setTodos} />
     </div>
