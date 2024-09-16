@@ -25,7 +25,7 @@ const FormLists  = ({ todos , setTodos }: FormListsProps) => {
     setTodos(newTodos);
 
     try {
-      await axios.post(`${API_URL}/update-status`, {
+      await axios.post(`${API_URL}update-status`, {
         id,
         status: todo.status,
       });
