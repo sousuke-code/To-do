@@ -9,6 +9,6 @@
     "moduleResolution": "node", 
     "resolveJsonModule": true     
   },
-  "include": ["src/**/*.ts"],
+  "include": ["*.ts"],
   "exclude": ["node_modules"]
 }
