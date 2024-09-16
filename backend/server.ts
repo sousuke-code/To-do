@@ -16,7 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 //   res.send("Hello Word");
 // });
 
-app.use(cors({ origin: 'https://todo-frontend-f6v9z193u-sousuke-codes-projects.vercel.app/' }));
+app.use(cors());
 app.use(express.json());
 
 app.get("/", async (req: express.Request, res: express.Response) => {
