@@ -7,5 +7,6 @@ export default {
     extend: {},
   },
   plugins: [],
+  importtant:true,
 }
 
