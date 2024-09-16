@@ -16,7 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 //   res.send("Hello Word");
 // });
 
-app.use(cors({ origin: "http://localhost:517"}));
+app.use(cors({ origin: "https://todo-frontend-two-beta.vercel.app/"}));
 app.use(express.json());
 
 app.get("/", async (req: express.Request, res: express.Response) => {
