@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
+const API_URL = "https://to-do-5jar.onrender.com/";
+
 type TodoType = {
   id: number;
   todo: string;
@@ -22,7 +24,7 @@ const FormInput = ({ setTodos} : AddTodo ) => {
     const { todo } = data;
     const status = "incomplete";
     await axios
-    .post("http://localhost:8000/add", { todo,status })
+    .post(`${API_URL}/add`, { todo,status })
     .then((response) => {
       const newTodo = response.data;
       setTodos((prevTodos) => [newTodo, ...prevTodos]);

@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const API_URL = "https://to-do-5jar.onrender.com/";
+
 type TodoType = {
   id: number;
   todo: string;
@@ -23,7 +25,7 @@ const FormLists  = ({ todos , setTodos }: FormListsProps) => {
     setTodos(newTodos);
 
     try {
-      await axios.post(`http://localhost:8000/update-status`, {
+      await axios.post(`${API_URL}/update-status`, {
         id,
         status: todo.status,
       });

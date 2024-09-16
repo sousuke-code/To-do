@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import FormInput from "./components/FormInput";
 import FormLists from "./components/FormLists";
 
+const API_URL = "https://to-do-5jar.onrender.com/";
 type TodoType = {
   id: number;
   todo: string;
@@ -15,7 +16,7 @@ const App  = () => {
   
   useEffect(() =>{
     axios
-     .get("http://localhost:8000")
+     .get(`${API_URL}`)
      .then((response) => {
        const { todos } = response.data;
       console.log(response.data.todos);
