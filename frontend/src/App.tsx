@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import FormInput from "./components/FormInput";
+import './index.css';
 import FormLists from "./components/FormLists";
 
 const API_URL = "https://to-do-5jar.onrender.com/";
